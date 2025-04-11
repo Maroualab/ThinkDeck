@@ -10,8 +10,13 @@ class Workspace extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'workspace_user')
+        return $this->belongsToMany(User::class, 'workspace_user', 'user_id', 'workspace_id')
             ->withPivot('joined_at');
+    }
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
     }
 
     public function addUsersToWorkspace($userIds)

@@ -10,6 +10,15 @@ class Page extends Model
     protected $primaryKey = 'page_id';
     protected $fillable = ['title', 'content'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function workspace()
+    {
+        return $this->belongsTo(Workspace::class);
+    }
     public function workspaceUser()
     {
         return $this->belongsTo(WorkspaceUser::class);
