@@ -12,9 +12,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('workspace_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->unsignedBigInteger('workspace_id'); // Define workspace_id as an unsigned big integer
-            $table->foreign('workspace_id')->references('workspace_id')->on('workspaces')->onDelete('cascade'); // Explicitly reference workspace_id
+            $table->foreignId('user_id')->references('id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('workspace_id')->references('id')->constrained('workspaces')->onDelete('cascade');
             $table->timestamp('joined_at');
             $table->primary(['user_id', 'workspace_id']);
         });

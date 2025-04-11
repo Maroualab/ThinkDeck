@@ -71,7 +71,7 @@
                     
                     <div class="space-y-1">
                         @forelse(auth()->user()->workspaces ?? [] as $workspace)
-                            <a href="#" class="flex items-center px-2 py-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800">
+                            <a href="{{ route('workspaces.show', $workspace->id) }}" class="flex items-center px-2 py-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800"></a>
                                 <div class="w-4 h-4 flex items-center justify-center mr-2 bg-blue-500 rounded">
                                     <span class="text-xs text-white">{{ substr($workspace->name ?? 'W', 0, 1) }}</span>
                                 </div>
@@ -81,6 +81,7 @@
                             <div class="px-2 py-1.5 text-sm text-gray-500 dark:text-gray-400">
                                 No workspaces yet
                             </div>
+                        @endforelse
                             <button 
                                 onclick="openModal('createWorkspaceModal')" 
                                 class="flex items-center px-2 py-1.5 text-sm text-blue-600 dark:text-blue-400 hover:underline"
@@ -90,7 +91,6 @@
                                 </svg>
                                 Create workspace
                             </button>
-                        @endforelse
                     </div>
 
                     <!-- Recent Pages -->

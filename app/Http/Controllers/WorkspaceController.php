@@ -15,7 +15,7 @@ class WorkspaceController extends Controller
 
         $workspace = Workspace::create([
             'name' => $request->name,
-            'user_id' => auth()->id(),
+            'id' => auth()->id(),
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Workspace created successfully!');

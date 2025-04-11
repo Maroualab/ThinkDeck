@@ -16,7 +16,7 @@ class PageController extends Controller
         $page = Page::create([
             'title' => $request->title,
             'workspace_id' => $request->workspace_id,
-            'user_id' => auth()->id(),
+            'id' => auth()->id(),
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Page created successfully!');
